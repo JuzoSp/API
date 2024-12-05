@@ -1,7 +1,14 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const cors = require('cors');
 
 const app = express();
+
+//Activer cors pour seulement le port 3000
+app.use(cors({
+    origin: 'http://localhost:3000', // Origine autorisée
+  }));
+  
 app.use(bodyParser.json()); // Middleware pour parser les JSON dans les requêtes
 
 // Simuler une base de données en mémoire
@@ -49,7 +56,7 @@ app.delete("/user/:id", (req, res) => {
 });
 
 // Démarrer le serveur
-const PORT = 3000;
+const PORT = 4000;
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
